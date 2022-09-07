@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+
+
+    
+
+    
+<form method="POST">{% csrf_token %}
+    
+<!-- form variable -->    
+ {{ form.as_p }} 
+
+  <input type="submit" name="sumbit">
+</form>
+    </body>
+    {% if form.non_field_errors %}
+    <p>Вы ввели неверные данные</p>
+{% endif %}
+
+{% endblock %}

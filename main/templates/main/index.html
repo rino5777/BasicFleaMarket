@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+
+
+<div class="container text-center">
+    <div class="row">
+      <div class="col-2">
+        1 of 3 (filter)
+      </div>
+      <div class="col-9">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+        
+    {% for plug in plugs %}
+    <div class="card mb-3 m-1" style="max-width: 440px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            {% if plug.image %}
+            <a href="{{ plug.get_absolute_url }}"><img class="img-fluid rounded-start" src='{{ plug.image.url }}' alt="" ></a>
+            {% else %}
+            <a href="{{ plug.get_absolute_url }}"><img class="img-fluid rounded-start" src="{% static 'img/no_img.jpg' %}"  width="100" height="100"  alt="" ></a>
+            {% endif %}
+        </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <a href="{{ plug.get_absolute_url }}"><h5 class="card-title">{{plug.title}}</h5></a>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+      </div>
+      <div class="col">
+        {% for i in publisher %}
+        {{i}}
+        {% endfor %}
+      </div>
+    </div>
+  
+
+
+{% endblock %}

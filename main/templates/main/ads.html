@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Разместить{% endblock %}
+{% block content %}
+
+
+
+
+
+
+
+
+
+<h2>Добавление объявления</h2>
+<form method="post" >
+    {% csrf_token %}
+    {{ form.as_p }} 
+    <input type="submit" name="sumbit">
+</form>
+
+
+
+{% endblock %}

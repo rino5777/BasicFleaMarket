@@ -1,0 +1,14 @@
+{% extends "profile/main_profile.html" %}
+{% block title %} Изменение пароля{% endblock %}
+
+{% block right_of_navbar %}
+
+<h1>Change you password</h1>
+<p>Use the form below to change your password.</p>
+<form action="." method="post">
+    {{ form.as_p }}
+    <p><input type="submit" value="Change"></p>
+    {% csrf_token %}
+</form>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+
+
+
+    
+
+    <div class="row">
+        <div class="col-4">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active"  id="menu" href="{% url 'user_profile:profile' %}" role="tab" aria-controls="list-home">Главная</a>
+            <a class="list-group-item list-group-item-action" id="menu" href="{% url 'main:advert' %}" role="tab" aria-controls="list-home">Объявления</a>
+            <a class="list-group-item list-group-item-action" id="menu" href="#" role="tab" aria-controls="list-home">Чаты</a>
+            <a class="list-group-item list-group-item-action" id="menu" href="{% url 'user_profile:edit' %}" role="tab" aria-controls="list-profile">Редактирование профиля</a>
+            <a class="list-group-item list-group-item-action" id="menu"  href="{% url 'user_profile:change_password' %}" role="tab" aria-controls="list-messages">Изменить пароль</a>
+            <a class="list-group-item list-group-item-action" id="menu" href="{% url 'user_profile:logout' %}" role="tab" aria-controls="list-settings">Выход</a>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="tab-content" id="nav-tabContent">
+            {% block right_of_navbar %}
+            
+            {% if user.is_authenticated %}
+            <a class="dropdown-item" href="{% url 'main:add_ads' %}">Разместить</a><br>
+           
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    {% if user.avatar %}
+                    <img src='{{ user.avatar.url }}' width="150" height="150" style="padding:" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% else %}
+                        <img src="{% static 'img/user-profile-svgrepo-com.svg' %}"  width="100" height="100" >
+                        {% endif %}
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"> {{user.username}}</h5>
+                      <p class="card-text">{{user.first_name}}/{{user.last_name}}/ {{user.name}}</p>
+    
+                      <p class="card-text"><small class="text-muted">Is active:{{user.is_active}}<br></small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+                {% else %}
+                <p>Please login to see this page.</p>
+                {% endif %}
+
+          </div>
+          {% endblock %}
+        </div>
+      </div>   
+    {% endblock %}

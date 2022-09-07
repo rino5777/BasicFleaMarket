@@ -1,0 +1,11 @@
+.accordion-control {
+    background-color: #303030;
+    color: #fff;
+    display: block;
+    width: 100%;
+    padding: 0.5em 0.5em 0.5em 0.7em;
+    margin: 0;
+    border-top: 1px solid #666;}
+  
+  .accordion-panel {
+    display: none;}

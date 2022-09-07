@@ -1,0 +1,10 @@
+{% extends "profile/main_profile.html" %}
+{% block title %}Редактирование профиля{% endblock %}
+{% block right_of_navbar %}
+
+<form action="." method="post">
+    {{ form.as_p }}
+    <p><input type="submit" value="Change"></p>
+    {% csrf_token %}
+</form>
+{% endblock %}
